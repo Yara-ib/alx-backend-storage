@@ -5,7 +5,8 @@ Constraints in SQL are used to specify rules for the data in a table. These rule
 
 ### Example: Creating a Table with Constraints
 
-```CREATE TABLE employees (
+```
+CREATE TABLE employees (
     emp_id INT AUTO_INCREMENT PRIMARY KEY,  -- Primary Key constraint
     first_name VARCHAR(50) NOT NULL,        -- NOT NULL constraint
     last_name VARCHAR(50) NOT NULL,
@@ -13,26 +14,35 @@ Constraints in SQL are used to specify rules for the data in a table. These rule
     hire_date DATE NOT NULL,
     job_id INT,
     salary DECIMAL(8, 2) CHECK (salary > 0) -- CHECK constraint
-);```
+);
+```
 
-```CREATE TABLE jobs (
+```
+CREATE TABLE jobs (
     job_id INT AUTO_INCREMENT PRIMARY KEY,
     job_title VARCHAR(50) NOT NULL
-);```
+);
+```
 
-```ALTER TABLE employees
+```
+ALTER TABLE employees
 ADD CONSTRAINT fk_job
-FOREIGN KEY (job_id) REFERENCES jobs(job_id); -- FOREIGN KEY constraint```
+FOREIGN KEY (job_id) REFERENCES jobs(job_id); -- FOREIGN KEY constraint
+```
 
 ## 2. Optimizing Queries by Adding Indexes
 Indexes are used to speed up the retrieval of rows by using a pointer. Indexes can be created on a single column or a combination of columns.
 
 ### Example: Adding an Index
 
-```CREATE INDEX idx_last_name ON employees(last_name);```
+```
+CREATE INDEX idx_last_name ON employees(last_name);
+```
 
-```-- Composite index on multiple columns
-CREATE INDEX idx_first_last_name ON employees(first_name, last_name);```
+```
+-- Composite index on multiple columns
+CREATE INDEX idx_first_last_name ON employees(first_name, last_name);
+```
 
 ## 3. Stored Procedures and Functions in MySQL
 Stored Procedures: These are stored code that can be executed and reused. They can have input and output parameters.
@@ -65,22 +75,29 @@ BEGIN
     RETURN salary * 0.1;
 END //
 
-DELIMITER ;```
+DELIMITER ;
+```
 
-```-- Using the function
-SELECT first_name, last_name, CalculateBonus(salary) AS bonus FROM employees;```
+```
+-- Using the function
+SELECT first_name, last_name, CalculateBonus(salary) AS bonus FROM employees;
+```
 
 ## 4. Views in MySQL
 A view is a virtual table based on the result set of an SQL statement. Views can be used to simplify complex queries, improve security, and provide a level of abstraction.
 
 ### Example: Creating a View
-```CREATE VIEW EmployeeDetails AS
+```
+CREATE VIEW EmployeeDetails AS
 SELECT e.emp_id, e.first_name, e.last_name, j.job_title
 FROM employees e
-JOIN jobs j ON e.job_id = j.job_id;```
+JOIN jobs j ON e.job_id = j.job_id;
+```
 
-```-- Using the view
-SELECT * FROM EmployeeDetails;```
+```
+-- Using the view
+SELECT * FROM EmployeeDetails;
+```
 
 ## 5. Triggers in MySQL
 Triggers are database callbacks that are automatically executed or fired when certain events occur.
@@ -98,7 +115,8 @@ BEGIN
     END IF;
 END //
 
-DELIMITER ;```
+DELIMITER ;
+```
 
 ## 6. MySQL Performance: Leveraging Database Indexing
 Indexes improve the speed of data retrieval operations on a database table at the cost of additional storage and slower writes.
@@ -108,7 +126,8 @@ Indexes improve the speed of data retrieval operations on a database table at th
 CREATE INDEX idx_emp_last_name ON employees(last_name);
 
 -- Analyzing query performance using EXPLAIN
-EXPLAIN SELECT * FROM employees WHERE last_name = 'Smith';```
+EXPLAIN SELECT * FROM employees WHERE last_name = 'Smith';
+```
 
 ## 7. CREATE TABLE Statement
 The CREATE TABLE statement is used to create a new table in a database.
@@ -118,10 +137,11 @@ The CREATE TABLE statement is used to create a new table in a database.
 CREATE TABLE departments (
     dept_id INT AUTO_INCREMENT PRIMARY KEY,
     dept_name VARCHAR(100) NOT NULL
-);```
+);
+```
 
 ## 8. CREATE PROCEDURE and CREATE FUNCTION Statements
-#### Stored Procedure Example:
+### Stored Procedure Example:
 ```
 DELIMITER //
 
@@ -131,7 +151,8 @@ BEGIN
     VALUES (first_name, last_name, email, hire_date, job_id, salary);
 END //
 
-DELIMITER ;```
+DELIMITER ;
+```
 
 ### Function Example:
 ```
@@ -146,7 +167,8 @@ BEGIN
     RETURN full_name;
 END //
 
-DELIMITER ;```
+DELIMITER ;
+```
 
 ## 9. CREATE INDEX Statement
 The CREATE INDEX statement is used to create indexes on tables.
