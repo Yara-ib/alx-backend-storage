@@ -28,5 +28,5 @@ if __name__ == "__main__":
     print(f'\t method POST: {find_nd_count({"method": "POST"})}')
     print(f'\t method PUT: {find_nd_count({"method": "PUT"})}')
     print(f'\t method PATCH: {find_nd_count({"method": "PATCH"})}')
-    print(f'\t method GET: {find_nd_count({"method": "DELETE"})}')
+    print(f'\t method DELETE: {find_nd_count({"method": "DELETE"})}')
     print(f'{get_count} status check')
